@@ -5,10 +5,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
+@jakarta.persistence.IdClass(entity.PedidoprodutoPK.class)
 public class Pedidoproduto {
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
     @Basic
     @Column(name = "idpedido")
     private int idpedido;
+    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @jakarta.persistence.Id
     @Basic
     @Column(name = "idproduto")
     private int idproduto;

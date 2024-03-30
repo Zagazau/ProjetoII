@@ -15,10 +15,13 @@ public class FaturaCompraBll {
 
     public void adicionarFaturaCompra(int idFatura, int idEncomenda, int idTipoPagamento, float valor, int quantidade) {
         String query = "INSERT INTO faturacompra (idfaturac, idencomenda, idtipopag, valor, quantidade) VALUES (?, ?, ?, ?, ?)";
+        Connection connection = null;
+        PreparedStatement statement = null;
+
         try {
             entityManager.getTransaction().begin();
-            Connection connection = entityManager.unwrap(Connection.class);
-            PreparedStatement statement = connection.prepareStatement(query);
+            connection = entityManager.unwrap(Connection.class);
+            statement = connection.prepareStatement(query);
             statement.setInt(1, idFatura);
             statement.setInt(2, idEncomenda);
             statement.setInt(3, idTipoPagamento);
@@ -28,8 +31,21 @@ public class FaturaCompraBll {
             statement.executeUpdate();
             entityManager.getTransaction().commit();
         } catch (SQLException e) {
-            entityManager.getTransaction().rollback();
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
             e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

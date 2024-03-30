@@ -1,11 +1,14 @@
 package entity;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 
 @Entity
 public class Encomendaproduto {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Basic
     @Column(name = "idencomenda")
     private int idencomenda;

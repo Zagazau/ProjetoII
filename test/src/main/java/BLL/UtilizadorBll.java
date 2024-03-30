@@ -1,23 +1,24 @@
 package BLL;
 
+import jakarta.persistence.EntityManager;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class UtilizadorBLL {
-    private Connection connection;
+public class UtilizadorBll {
+    private EntityManager entityManager;
 
-    public UtilizadorBLL() {
-        try {
-            connection = DatabaseConnection.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public UtilizadorBll() {
+        entityManager = DbConnection.getEntityManager();
     }
 
     public void adicionarUtilizador(int idUtilizador, String codPostal, String nome, int telefone, String rua, int numPorta, int nif, int idTipoUtilizador) {
         String query = "INSERT INTO utilizador (idutilizador, codpostal, nome, telefone, rua, numporta, nif, idtipoutilizador) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+        try {
+            entityManager.getTransaction().begin();
+            Connection connection = entityManager.unwrap(Connection.class);
+            PreparedStatement statement = connection.prepareStatement(query);
             statement.setInt(1, idUtilizador);
             statement.setString(2, codPostal);
             statement.setString(3, nome);
@@ -28,9 +29,10 @@ public class UtilizadorBLL {
             statement.setInt(8, idTipoUtilizador);
 
             statement.executeUpdate();
+            entityManager.getTransaction().commit();
         } catch (SQLException e) {
+            entityManager.getTransaction().rollback();
             e.printStackTrace();
         }
     }
-
 }

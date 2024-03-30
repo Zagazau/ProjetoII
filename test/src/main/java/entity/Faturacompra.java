@@ -21,6 +21,11 @@ public class Faturacompra {
     @Column(name = "quantidade")
     private int quantidade;
 
+    @ManyToOne
+    @JoinColumn(name = "idcliente")
+    private Cliente cliente;
+
+
     public int getIdfaturac() {
         return idfaturac;
     }
