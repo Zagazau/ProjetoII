@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="javafx-swt">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx-swt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.base.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.controls.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.fxml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.graphics.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.media.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../openjfx-22_windows-x64_bin-sdk/javafx-sdk-22/javafx.web.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/test/src/main/java" />
+      <root url="file://$PROJECT_DIR$/xml/src/main/java" />
+      <root url="file://$PROJECT_DIR$/test/xml/src/main/java" />
+    </SOURCES>
+  </library>
+</component>
